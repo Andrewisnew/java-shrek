@@ -11,4 +11,8 @@ public class Main {
     public String getWinner(String[] runners, int[] times) {
         throw new NotImplementedException();
     }
+
+    public String getSecond(String[] runners, int[] times) {
+        throw new NotImplementedException();
+    }
 }
