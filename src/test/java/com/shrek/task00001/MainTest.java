@@ -63,4 +63,14 @@ public class MainTest {
         String second = main.getSecond(names, times);
         assertNull(second);
     }
+
+    @Test
+    public void test6() {
+        String[] names = {"Elena", "Thomas", "Hamilton"};
+        int[] times = {141, 215, 130};
+        String winner = main.getWinner(names, times);
+        assertEquals( "Hamilton", winner);
+        String second = main.getSecond(names, times);
+        assertEquals("Elena", second);
+    }
 }
