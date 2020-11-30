@@ -31,32 +31,29 @@ public class Main {
         }
         int winnerTime = times[0];
         int secondTime = times[1];
-
-        int secondPos = 0;
+        int secondPos = 1;
         String secondName;
-
-        if (times.length == 2) {
             if (times[0] > times[1]) {
                 winnerTime = times[1];
                 secondTime = times[0];
+                secondPos = 0;
+            }
+        for (int i =0 ; i <= times.length - 1; i++) {
+            if (times.length==2){
+                break;
+            }
+            if (times[i]>=secondTime){
+                continue;
+            }
+            if (times[i]<secondTime){
+                if (times[i]<winnerTime){
+                    winnerTime=times[i];
+                    continue;
+                }
+                secondTime=times[i];
+                secondPos = i;
             }
         }
-
-        for (int i = 2; i <= times.length - 1; i++) {
-            if (winnerTime > times[i] && secondTime > times[i]) {
-                winnerTime = times[i];
-            }
-            if (winnerTime < times[i] && secondTime > times[i]) {
-                secondTime = times[i];
-            }
-        }
-
-        for (int pos = 0; pos < times.length; pos++) {
-            if (times[pos] == secondTime) {
-                secondPos = pos;
-            }
-        }
-
         secondName = runners[secondPos];
         return secondName;
     }
