@@ -12,13 +12,13 @@ public class Main {
         if (times.length == 0) {
             return null;
         }
-        int min1 = times[0];
+        int winnerTime = times[0];
         int winnerPos = 0;
         for (int i = 0; i <= times.length - 1; i++) {
-            if (times[i] < min1) {
-                min1 = times[i];
+            if (times[i] < winnerTime) {
+                winnerTime = times[i];
             }
-            if (times[i] == min1) {
+            if (times[i] == winnerTime) {
                 winnerPos = i;
             }
         }
@@ -32,26 +32,27 @@ public class Main {
         int winnerTime = times[0];
         int secondTime = times[1];
         int secondPos = 1;
+        int winnerPos = 0;
         String secondName;
-            if (times[0] > times[1]) {
-                winnerTime = times[1];
-                secondTime = times[0];
-                secondPos = 0;
-            }
-        for (int i =0 ; i <= times.length - 1; i++) {
-            if (times.length==2){
-                break;
-            }
-            if (times[i]>=secondTime){
+        if (times[0] > times[1]) {
+            winnerTime = times[1];
+            secondTime = times[0];
+            secondPos = 0;
+            winnerPos = 0;
+        }
+        for (int i = 2; i <= times.length - 1; i++) {
+
+            if (times[i] < secondTime && times[i] > winnerTime) {
+                secondTime = times[i];
+                secondPos = i;
                 continue;
             }
-            if (times[i]<secondTime){
-                if (times[i]<winnerTime){
-                    winnerTime=times[i];
-                    continue;
-                }
-                secondTime=times[i];
-                secondPos = i;
+            if (times[i] <= winnerTime) {
+                secondTime = winnerTime;
+                secondPos = winnerPos;
+                winnerTime = times[i];
+                winnerPos = i;
+                continue;
             }
         }
         secondName = runners[secondPos];

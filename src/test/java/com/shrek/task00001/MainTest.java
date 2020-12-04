@@ -69,7 +69,7 @@ public class MainTest {
         String[] names = {"Elena", "Thomas", "Hamilton"};
         int[] times = {141, 215, 130};
         String winner = main.getWinner(names, times);
-        assertEquals( "Hamilton", winner);
+        assertEquals("Hamilton", winner);
         String second = main.getSecond(names, times);
         assertEquals("Elena", second);
     }
