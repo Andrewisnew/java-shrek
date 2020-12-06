@@ -39,7 +39,6 @@ public class Main {
             if (times[i] <= times[winnerPos]) {
                 secondPos = winnerPos;
                 winnerPos = i;
-                continue;
             }
         }
         return runners[secondPos];
