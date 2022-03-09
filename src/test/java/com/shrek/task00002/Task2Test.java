@@ -62,7 +62,7 @@ public class Task2Test {
 
     @Test
     public void test4() {
-        Runner[] noRunners = new Runner[]{};
+        Runner[] noRunners = null;
         String winner = main.getWinner(noRunners);
         assertNull(winner);
         String second = main.getSecond(noRunners);

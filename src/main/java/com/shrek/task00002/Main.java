@@ -1,6 +1,5 @@
 package com.shrek.task00002;
 
-import org.w3c.dom.ls.LSOutput;
 
 import java.util.Arrays;
 
@@ -12,20 +11,40 @@ import java.util.Arrays;
 public class Main {
 
     public String getWinner(Runner[] runners) {
-        if (runners.length == 0) {
+        if (runners == null) {
             return null;
         }
-        Arrays.sort(runners);
-
-        return runners[0].getName();
+        int winPosition = 0;
+        for (int i = 0; i <= runners.length - 1; i++) {
+            if (runners[i].compareTo(runners[winPosition]) < 0) {
+                winPosition = i;
+            }
+        }
+        return runners[winPosition].getName();
     }
 
     public String getSecond(Runner[] runners) {
-        if (runners.length == 0 || runners.length < 2) {
+        if (runners == null || runners.length < 2) {
             return null;
         }
-        Arrays.sort(runners);
-        return (runners[1].getName());
+        int secondPos = 1;
+        int winnerPos = 0;
+        if (runners[winnerPos].compareTo(runners[secondPos]) > 0) {
+            secondPos = 0;
+            winnerPos = 1;
+        }
+        for (int q = 2; q <= runners.length - 1; q++) {
+            if ((runners[q].compareTo(runners[secondPos]) < 0)
+                    && (runners[q].compareTo(runners[winnerPos]) > 0)) {
+                secondPos = q;
+                continue;
+            }
+            if (runners[q].compareTo(runners[winnerPos]) <= 0) {
+                secondPos = winnerPos;
+                winnerPos = q;
+            }
+        }
+        return (runners[secondPos].getName());
 
     }
 }
