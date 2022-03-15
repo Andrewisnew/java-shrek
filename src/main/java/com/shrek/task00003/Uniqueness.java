@@ -1,6 +1,7 @@
 package com.shrek.task00003;
 
 import javax.annotation.Nonnull;
+
 import java.util.*;
 
 /**
@@ -13,23 +14,29 @@ import java.util.*;
  */
 public class Uniqueness {
     public List<String> elements;
+    public Set<String> elementsInSet;
+    public List<String> uniquessElements;
 
     public Uniqueness(@Nonnull List<String> elements) {
         this.elements = elements;
+        this.elementsInSet = new TreeSet<String>(elements);
+        this.uniquessElements = new ArrayList<String>(elementsInSet);
     }
 
-    public int dublicateCounter() {
-        if (elements.size() < 2) {
-            return 0;
-        }
-        int allDublicateCounter = 0;
-        Set<String> set = new HashSet<String>();
-        for (String element : elements) {
-            if (!set.add(element)) {
-                allDublicateCounter++;
+    public int duplicateCounter() {
+        int duplicateCount = 0;
+        for (int i = 0; i < elementsInSet.size(); i++) {
+            int count = 0;
+            for (int j = 0; j < elements.size(); j++) {
+                if (elements.get(j).equals(uniquessElements.get(i))) {
+                    count++;
+                }
+            }
+            if (count > 1) {
+                duplicateCount++;
             }
         }
-        return allDublicateCounter;
+        return duplicateCount;
     }
 
     public boolean duplicateCheck() {

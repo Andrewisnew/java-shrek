@@ -26,8 +26,8 @@ public class UniquenessTest {
         list.add("B");
         list.add("C");
         Uniqueness u = new Uniqueness(list);
-        int count = u.dublicateCounter();
-        assertEquals(3, count);
+        int count = u.duplicateCounter();
+        assertEquals(2, count);
 
     }
 
@@ -41,8 +41,8 @@ public class UniquenessTest {
         list.add("B");
         list.add("B");
         Uniqueness u = new Uniqueness(list);
-        int count = u.dublicateCounter();
-        assertEquals(5, count);
+        int count = u.duplicateCounter();
+        assertEquals(1, count);
 
     }
 
@@ -56,7 +56,7 @@ public class UniquenessTest {
         list.add("E");
         list.add("F");
         Uniqueness u = new Uniqueness(list);
-        int count = u.dublicateCounter();
+        int count = u.duplicateCounter();
         assertEquals(0, count);
 
     }
@@ -159,7 +159,7 @@ public class UniquenessTest {
         List<String> list = new ArrayList<String>();
         list.add("A");
         Uniqueness u = new Uniqueness(list);
-        int count = u.dublicateCounter();
+        int count = u.duplicateCounter();
         assertEquals(0, count);
 
     }
