@@ -1,7 +1,6 @@
 package com.shrek.task00002;
 
 
-import java.util.Arrays;
 
 /**
  * Создать класс Runner implements Comparable, который будет содержать имя и время бегуна. Сделать то же самое что было в задаче task00001.
@@ -34,8 +33,7 @@ public class Main {
             winnerPos = 1;
         }
         for (int q = 2; q <= runners.length - 1; q++) {
-            if ((runners[q].compareTo(runners[secondPos]) < 0)
-                    && (runners[q].compareTo(runners[winnerPos]) > 0)) {
+            if (runners[q].compareTo(runners[secondPos]) < 0 && runners[q].compareTo(runners[winnerPos])> 0) {
                 secondPos = q;
                 continue;
             }

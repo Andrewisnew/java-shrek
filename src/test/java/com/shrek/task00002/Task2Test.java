@@ -12,7 +12,6 @@ public class Task2Test {
     @Before
     public void setUp() {
         main = new Main();
-
     }
 
     Runner runner1 = new Runner("Elena", 341);
