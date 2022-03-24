@@ -123,7 +123,7 @@ public class UniquenessTest {
         list.add("C");
         Uniqueness u = new Uniqueness(list);
         int numberOfDuplicate = u.numberOfEachDuplicate().get("B");
-        assertEquals(1, numberOfDuplicate);
+        assertEquals(2, numberOfDuplicate);
     }
 
     @Test
@@ -137,7 +137,7 @@ public class UniquenessTest {
         list.add("F");
         Uniqueness u = new Uniqueness(list);
         int numberOfDuplicate = u.numberOfEachDuplicate().get("B");
-        assertEquals(0, numberOfDuplicate);
+        assertEquals(null, numberOfDuplicate);
     }
 
     @Test
@@ -151,7 +151,7 @@ public class UniquenessTest {
         list.add("A");
         Uniqueness u = new Uniqueness(list);
         int numberOfDuplicate = u.numberOfEachDuplicate().get("A");
-        assertEquals(5, numberOfDuplicate);
+        assertEquals(6, numberOfDuplicate);
     }
 
     @Test
@@ -170,7 +170,7 @@ public class UniquenessTest {
         list.add("A");
         Uniqueness u = new Uniqueness(list);
         int numberOfDuplicate = u.numberOfEachDuplicate().get("A");
-        assertEquals(0, numberOfDuplicate);
+        assertEquals(null, numberOfDuplicate);
     }
 
     @Test

@@ -1,8 +1,7 @@
 package com.shrek.task00003;
-
 import javax.annotation.Nonnull;
-
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Класс в конструкторе принимает список строк. Необхдимо реализовать 3 метода:
@@ -13,66 +12,46 @@ import java.util.*;
  * Написать тесты
  */
 public class Uniqueness {
-    public List<String> elements;
-    public Set<String> elementsInSet;
-    public List<String> uniquessElements;
+    private final Map<String, Integer> mapOfElements;
+
 
     public Uniqueness(@Nonnull List<String> elements) {
-        this.elements = elements;
-        this.elementsInSet = new TreeSet<String>(elements);
-        this.uniquessElements = new ArrayList<String>(elementsInSet);
+        mapOfElements = elements.stream()
+                .collect(Collectors.toMap(e -> e, e -> 1, Integer::sum));
     }
 
     public int duplicateCounter() {
-        int duplicateCount = 0;
-        for (int i = 0; i < elementsInSet.size(); i++) {
-            int count = 0;
-            for (int j = 0; j < elements.size(); j++) {
-                if (elements.get(j).equals(uniquessElements.get(i))) {
-                    count++;
-                }
-            }
-            if (count > 1) {
-                duplicateCount++;
+
+        ArrayList<Integer> values = new ArrayList<>(mapOfElements.values());
+        int count = 0;
+        for (int i = 0; i < mapOfElements.size(); i++) {
+            if (values.get(i) > 1) {
+                count++;
             }
         }
-        return duplicateCount;
+        return count;
     }
 
     public boolean duplicateCheck() {
-        if (elements.size() < 2) {
-            return false;
-        }
-        for (int i = 0; i < elements.size(); i++) {
-            for (int j = 0; j < elements.size(); j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (elements.get(i).equals(elements.get(j))) {
-                    return true;
-                }
+        ArrayList<Integer> values = new ArrayList<>(mapOfElements.values());
+
+        for (int i = 0; i < mapOfElements.size(); i++) {
+            if (values.get(i) > 1) {
+                return true;
             }
         }
         return false;
     }
 
     public Map<String, Integer> numberOfEachDuplicate() {
-        Map<String, Integer> duplicateNumbers = new HashMap<String, Integer>();
-        if (elements.size() < 2) {
-            duplicateNumbers.put(elements.get(0), 0);
-            return duplicateNumbers;
-        }
-        for (int i = 0; i < elements.size(); i++) {
-            int count = 0;
-            for (int j = 0; j < elements.size(); j++) {
-                if (i == j) {
-                    continue;
-                }
-                if (elements.get(i).equals(elements.get(j))) {
-                    count++;
-                }
+        Map<String, Integer> duplicateNumbers = new HashMap<>();
+        for (Map.Entry<String, Integer> item : mapOfElements.entrySet()) {
+            if (item.getValue() > 1) {
+                duplicateNumbers.put(item.getKey(), item.getValue());
             }
-            duplicateNumbers.put(elements.get(i), count);
+        }
+        if (duplicateNumbers.size() == 0) {
+            duplicateNumbers = null;
         }
         return duplicateNumbers;
     }
